@@ -5,6 +5,7 @@ import { cartActions } from "./../store/cartSlice";
 const CartItem = ({ name, quantity, total, price, id }) => {
   const dispatch = useDispatch();
   const removeHandler = () => {
+    // console.log("got clicked to remove")
     dispatch(cartActions.removeFromCart(id));
   };
   const addHandler = () => {
@@ -13,6 +14,8 @@ const CartItem = ({ name, quantity, total, price, id }) => {
         id,
         name,
         price,
+        quantity,
+        total
       })
     );
   };
@@ -20,7 +23,7 @@ const CartItem = ({ name, quantity, total, price, id }) => {
     <div className="cartItem">
       <h2> {name}</h2>
       <p>${price} /-</p>
-      <p>x{quantity}</p>
+      <p>{quantity}</p>
       <article>Total ${total}</article>
       <button className="cart-actions" onClick={removeHandler}>
         -
